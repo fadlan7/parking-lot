@@ -38,5 +38,17 @@ namespace ParkingLot
                 Console.WriteLine("Sorry, parking lot is full");
             }
         }
+        
+        public void LeaveParking(int parkingSlotNumber)
+        {
+            if (parkingSlotNumber > 0 && parkingSlotNumber <= parkingSlot)           
+            {
+                if (parkingSlotNumber < parkingSlot)
+                {
+                    parkingSlot = parkingSlotNumber;
+                    Console.WriteLine($"Slot number {parkingSlotNumber} is free");
+                }
+            } 
+        }
     }
 }
