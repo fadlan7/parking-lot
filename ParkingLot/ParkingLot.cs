@@ -31,7 +31,6 @@ namespace ParkingLot
         {
             if (parkingSlot <= capacity)
             {
-                Console.WriteLine(capacity);
                 vehicles[parkingSlot - 1] = vehicle;
                 Console.WriteLine($"Allocated slot number: {parkingSlot}");
                 parkingSlot++;
@@ -127,6 +126,24 @@ namespace ParkingLot
             }
 
             Console.WriteLine(sb.ToString());
+        }
+        
+        public void SlotNumberWithRegistrationNumber(string regNumber)
+        {
+            bool isFound = false;
+            for (int i = 0; i < capacity; i++) 
+            { 
+                if (vehicles[i].RegistrationNumber.ToLower() == regNumber.ToLower() && vehicles[i] != null)
+                { 
+                    Console.WriteLine(i + 1);
+                    isFound = true;
+                }
+            }
+
+            if (!isFound)
+            {
+                Console.WriteLine("Not found");
+            }
         }
     }
 }

@@ -85,7 +85,7 @@ namespace ParkingLot
                     parkingLot.SlotNumberWithColour(splitInput[1]);
                 }else if (firstWord == "slot_number_for_registration_number")
                 {
-                    Console.WriteLine("slot nomor sesuai plat nmr");
+                    parkingLot.SlotNumberWithRegistrationNumber(splitInput[1]);
                 }else if (firstWord == "exit")
                 {
                     return;
