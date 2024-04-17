@@ -55,7 +55,13 @@ namespace ParkingLot
                     parkingLot.LeaveParking(slotNumber);
                 }else if (firstWord == "status")
                 {
-                    Console.WriteLine("Statusss");
+                    if (parkingLot.Capacity == 0)
+                    {
+                        Console.WriteLine("Please create parking lot first");
+                        continue;
+                    }
+                    
+                    parkingLot.GetAllVehicles();
                 }else if (firstWord == "type_of_vehicles")
                 {
                     Console.WriteLine("type kendaraan");

@@ -43,12 +43,26 @@ namespace ParkingLot
         {
             if (parkingSlotNumber > 0 && parkingSlotNumber <= parkingSlot)           
             {
+                vehicles[parkingSlotNumber - 1] = null;
+                    
                 if (parkingSlotNumber < parkingSlot)
                 {
                     parkingSlot = parkingSlotNumber;
                     Console.WriteLine($"Slot number {parkingSlotNumber} is free");
                 }
             } 
+        }
+
+        public void GetAllVehicles()
+        { 
+            Console.WriteLine("Slot No.    Registration No  Type   Colour"); 
+            for (int i = 0; i < capacity; i++)
+            {
+                if (vehicles[i] != null)
+                {
+                    Console.WriteLine($"{i + 1}     {vehicles[i].RegistrationNumber}    {vehicles[i].TypeOfVehicle}     {vehicles[i].Colour}");
+                }
+            }
         }
     }
 }
