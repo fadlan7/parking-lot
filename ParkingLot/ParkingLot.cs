@@ -83,8 +83,7 @@ namespace ParkingLot
         
         public void VehicleRegistrationNumberWithColour(string colour)
         {
-            // string[] registrationNumber = new[] { "" };
-            List<String> result = new List<string>();
+            List<string> result = new List<string>();
             for (int i = 0; i < capacity; i++) 
             { 
                 if (vehicles[i].Colour.ToLower() == colour.ToLower() && vehicles[i] != null) 
@@ -101,6 +100,30 @@ namespace ParkingLot
                     sb.Append(", ");
                 }
                 sb.Append(string.Join(", ",vehicle));
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+        
+        public void SlotNumberWithColour(string colour)
+        {
+            List<int> result = new List<int>();
+            for (int i = 0; i < capacity; i++) 
+            { 
+                if (vehicles[i].Colour.ToLower() == colour.ToLower() && vehicles[i] != null) 
+                {
+                    result.Add(i + 1);
+                }
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (var slot in result)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(string.Join(", ",slot));
             }
 
             Console.WriteLine(sb.ToString());
