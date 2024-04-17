@@ -79,7 +79,7 @@ namespace ParkingLot
                     Console.WriteLine("Plate nomor genap");
                 } else if (firstWord == "registration_numbers_for_vehicles_with_colour")
                 {
-                    Console.WriteLine("plat nmr Sesuai warnaa mobil");
+                    parkingLot.VehicleRegistrationNumberWithColour(splitInput[1]);
                 }else if (firstWord == "slot_numbers_for_vehicles_with_colour")
                 {
                     Console.WriteLine("slot nomr sesuai warna mobil");

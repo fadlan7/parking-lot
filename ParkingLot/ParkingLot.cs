@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ParkingLot
 {
@@ -76,6 +79,31 @@ namespace ParkingLot
                 }
             } 
             Console.WriteLine($"{count}");
+        }
+        
+        public void VehicleRegistrationNumberWithColour(string colour)
+        {
+            // string[] registrationNumber = new[] { "" };
+            List<String> result = new List<string>();
+            for (int i = 0; i < capacity; i++) 
+            { 
+                if (vehicles[i].Colour.ToLower() == colour.ToLower() && vehicles[i] != null) 
+                {
+                    result.Add(vehicles[i].RegistrationNumber);
+                }
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (var vehicle in result)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(string.Join(", ",vehicle));
+            }
+
+            Console.WriteLine(sb.ToString());
         }
     }
 }
