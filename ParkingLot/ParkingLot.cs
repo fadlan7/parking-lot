@@ -64,5 +64,18 @@ namespace ParkingLot
                 }
             }
         }
+
+        public void TypeOfVehicle(string vehicleType)
+        {
+            int count = 0;
+            for (int i = 0; i < capacity; i++) 
+            { 
+                if (vehicles[i].TypeOfVehicle.ToLower() == vehicleType.ToLower() && vehicles[i] != null) 
+                { 
+                    count++;
+                }
+            } 
+            Console.WriteLine($"{count}");
+        }
     }
 }

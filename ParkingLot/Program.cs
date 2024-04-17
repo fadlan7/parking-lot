@@ -64,7 +64,13 @@ namespace ParkingLot
                     parkingLot.GetAllVehicles();
                 }else if (firstWord == "type_of_vehicles")
                 {
-                    Console.WriteLine("type kendaraan");
+                    if (parkingLot.Capacity == 0)
+                    {
+                        Console.WriteLine("Please create parking lot first");
+                        continue;
+                    }
+                    
+                    parkingLot.TypeOfVehicle(splitInput[1]);
                 }else if (firstWord == "registration_numbers_for_vehicles_with_ood_plate")
                 {
                     Console.WriteLine("Plate nomor ganjil");
