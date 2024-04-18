@@ -90,44 +90,23 @@ namespace ParkingLot
                     result.Add(vehicles[i].RegistrationNumber);
                 }
             }
-            
-            StringBuilder sb = new StringBuilder();
-            foreach (var vehicle in result)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(", ");
-                }
-                sb.Append(string.Join(", ",vehicle));
-            }
-
-            Console.WriteLine(sb.ToString());
+            CommaSeparated(result);
         }
         
         public void SlotNumberWithColour(string colour)
         {
-            List<int> result = new List<int>();
+            List<string> result = new List<string>();
             for (int i = 0; i < capacity; i++) 
             { 
                 if (vehicles[i].Colour.ToLower() == colour.ToLower() && vehicles[i] != null) 
                 {
-                    result.Add(i + 1);
+                    result.Add((i + 1).ToString());
                 }
             }
             
-            StringBuilder sb = new StringBuilder();
-            foreach (var slot in result)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(", ");
-                }
-                sb.Append(string.Join(", ",slot));
-            }
-
-            Console.WriteLine(sb.ToString());
+            CommaSeparated(result);
         }
-        
+
         public void SlotNumberWithRegistrationNumber(string regNumber)
         {
             bool isFound = false;
@@ -158,17 +137,7 @@ namespace ParkingLot
                 }
             }
             
-            StringBuilder sb = new StringBuilder();
-            foreach (var vehicle in result)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(", ");
-                }
-                sb.Append(string.Join(", ",vehicle));
-            }
-
-            Console.WriteLine(sb.ToString());
+            CommaSeparated(result);
         }
         
         public void VehicleEvenRegistrationNumber()
@@ -183,17 +152,7 @@ namespace ParkingLot
                 }
             }
             
-            StringBuilder sb = new StringBuilder();
-            foreach (var vehicle in result)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(", ");
-                }
-                sb.Append(string.Join(", ",vehicle));
-            }
-
-            Console.WriteLine(sb.ToString());
+            CommaSeparated(result);
         }
         
         private static string RemoveDash(string input)
@@ -201,6 +160,21 @@ namespace ParkingLot
             int startIndex = input.IndexOf('-') + 1;
             int endIndex = input.LastIndexOf('-');
             return input.Substring(startIndex, endIndex - startIndex);
+        }
+        
+        private static void CommaSeparated(List<string> result)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var slot in result)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(string.Join(", ",slot));
+            }
+
+            Console.WriteLine(sb.ToString());
         }
     }
 }
