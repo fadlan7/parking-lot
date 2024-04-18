@@ -31,11 +31,7 @@ namespace ParkingLot
 
                 }else if (firstWord == "park")
                 {
-                    if (parkingLot.Capacity == 0)
-                    {
-                        Console.WriteLine("Please create parking lot first");
-                        continue;
-                    }
+                    if (CheckLotCapacity()) continue;
                     
                     string registrationNumber = splitInput[1];
                     string vehicleColor = splitInput[2];
@@ -45,46 +41,43 @@ namespace ParkingLot
 
                 }else if (firstWord == "leave")
                 {
-                    if (parkingLot.Capacity == 0)
-                    {
-                        Console.WriteLine("Please create parking lot first");
-                        continue;
-                    }
+                    if (CheckLotCapacity()) continue;
                     
                     int slotNumber = Convert.ToInt32(splitInput[1]);
                     parkingLot.LeaveParking(slotNumber);
                 }else if (firstWord == "status")
                 {
-                    if (parkingLot.Capacity == 0)
-                    {
-                        Console.WriteLine("Please create parking lot first");
-                        continue;
-                    }
+                    if (CheckLotCapacity()) continue;
                     
                     parkingLot.GetAllVehicles();
                 }else if (firstWord == "type_of_vehicles")
                 {
-                    if (parkingLot.Capacity == 0)
-                    {
-                        Console.WriteLine("Please create parking lot first");
-                        continue;
-                    }
+                    if (CheckLotCapacity()) continue;
                     
                     parkingLot.TypeOfVehicle(splitInput[1]);
                 }else if (firstWord == "registration_numbers_for_vehicles_with_ood_plate")
                 {
-                    Console.WriteLine("Plate nomor ganjil");
+                    if (CheckLotCapacity()) continue;
+                    parkingLot.VehicleOddRegistrationNumber();
                 }else if (firstWord == "registration_numbers_for_vehicles_with_event_plate")
                 {
-                    Console.WriteLine("Plate nomor genap");
+                    if (CheckLotCapacity()) continue;
+                    
+                    parkingLot.VehicleEvenRegistrationNumber();
                 } else if (firstWord == "registration_numbers_for_vehicles_with_colour")
                 {
+                    if (CheckLotCapacity()) continue;
+                    
                     parkingLot.VehicleRegistrationNumberWithColour(splitInput[1]);
                 }else if (firstWord == "slot_numbers_for_vehicles_with_colour")
                 {
+                    if (CheckLotCapacity()) continue;
+                    
                     parkingLot.SlotNumberWithColour(splitInput[1]);
                 }else if (firstWord == "slot_number_for_registration_number")
                 {
+                    if (CheckLotCapacity()) continue;
+                    
                     parkingLot.SlotNumberWithRegistrationNumber(splitInput[1]);
                 }else if (firstWord == "exit")
                 {
@@ -93,6 +86,17 @@ namespace ParkingLot
                 else
                 {
                     Console.WriteLine("wrong command");
+                }
+
+                bool CheckLotCapacity()
+                {
+                    if (parkingLot.Capacity == 0)
+                    {
+                        Console.WriteLine("Please create parking lot first");
+                        return true;
+                    }
+
+                    return false;
                 }
             }
         }

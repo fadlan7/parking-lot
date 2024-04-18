@@ -145,5 +145,62 @@ namespace ParkingLot
                 Console.WriteLine("Not found");
             }
         }
+        
+        public void VehicleOddRegistrationNumber()
+        {
+            List<string> result = new List<string>();
+            for (int i = 0; i < capacity; i++) 
+            { 
+                String removeDashResult = RemoveDash(vehicles[i].RegistrationNumber);
+                if (removeDashResult[removeDashResult.Length-1] % 2 != 0)
+                {
+                    result.Add(vehicles[i].RegistrationNumber);
+                }
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (var vehicle in result)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(string.Join(", ",vehicle));
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+        
+        public void VehicleEvenRegistrationNumber()
+        {
+            List<string> result = new List<string>();
+            for (int i = 0; i < capacity; i++) 
+            { 
+                String removeDashResult = RemoveDash(vehicles[i].RegistrationNumber);
+                if (removeDashResult[removeDashResult.Length-1] % 2 == 0)
+                {
+                    result.Add(vehicles[i].RegistrationNumber);
+                }
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (var vehicle in result)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(string.Join(", ",vehicle));
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+        
+        private static string RemoveDash(string input)
+        {
+            int startIndex = input.IndexOf('-') + 1;
+            int endIndex = input.LastIndexOf('-');
+            return input.Substring(startIndex, endIndex - startIndex);
+        }
     }
 }
